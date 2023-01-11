@@ -1,38 +1,164 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+*{
+  font-family: "Montserrat";
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+label{
+  color:#2C2C2C;
+}
+.Login{
+  padding-top: 154px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+}
+.form{
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+.form input{
+  height: 40px;
+  border: 1px solid #C8C3C3;
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+div.centrado{
+  width: 280px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+button.centrado{
+width: 100px;
+height: 30px;
+margin-top: 18px;
+border: none;
+color:white;
+font-weight: bold;
+padding: 5px 10px;
+gap: 10px;
+align-items: center;
+background-color: #E20613 ;
 }
 
-.App-link {
-  color: #61dafb;
+button.centrado:disabled{
+  background-color:  #E0E0E0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button.centrado:focus{
+  border: 1px solid #E20613;
+  background-color:  #ffffff;
+  color: #E20613;
+}
+
+.logo-login{
+  margin-top: 202px;
+}
+
+.negrita{
+  font-weight: bold;
+}
+.error{
+  color: #d1353f;
+}
+
+.Home{
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+}
+.scroll{
+  display: block;
+  background-color: #ffffff;
+  height: 2000px;
+}
+.NavBar{
+  position:fixed;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  background-color: #E20613;
+  color: #ffffff;
+  justify-content: space-around;
+  bottom: 0%;
+}
+
+.btn-NavBar{
+  padding-top: 8px;
+  text-align: center;
+}
+
+.sub-btn-NavBar{
+  font-size: 8px;
+}
+.over-btn{
+  width: 50px;
+  height: 44px;
+  z-index: 3;
+  display: block;
+  position: relative;
+  bottom:50px;
+  background-color: rgba(255, 255, 255, 0.261);
+  border-top: 3px solid #FFFFFF;
+}
+
+.avatar-home{
+  height: 36vh;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 1;
+}
+.nombre-home{
+  padding-left:14px ;
+  position: absolute;
+  top:180px;
+  color: #FFFFFF;
+font-weight: 500;
+font-size: 24px;
+line-height: 29px;
+}
+
+.card-home{
+padding: 14px;
+}
+
+.sub-card{
+  height: 44px;
+background-color: white;
+display: flex;
+justify-content: space-between;
+}
+
+.card-title{
+  margin:0;
+  padding:4px 8px;
+  font-weight: 600;
+font-size: 16px;
+line-height: 20px;
+
+color: #2C2C2C;
+}
+.card-subtitle{
+  margin:0;
+  padding:0px 8px;
+  font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+color: #818181;
+}
+
+.btn-card{
+  position: relative;
+  margin-right: 8px;
+  bottom:12px;
+}
+
+.bottom-margin{
+  height: 48px;
 }
