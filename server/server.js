@@ -5,6 +5,12 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const multer = require("multer")
 const fs = require('fs');
+require('dotenv').config();
+
+// Middlewares: 
+app.use(cookieParser());
+app.use(express.json());
+app.use("/", router);
 
 // Configuración del destino de las imagenes. Ordenado en carpetas por id del usuario.
 const storage = multer.diskStorage({
@@ -30,6 +36,8 @@ const storage = multer.diskStorage({
     });
   });
 
-  // Middlewares: 
-  app.use(cookieParser());
-  app.use(express.json());
+
+  
+app.listen(port, () => console.log(`Server ON: ${port}`));
+
+module.exports = app;

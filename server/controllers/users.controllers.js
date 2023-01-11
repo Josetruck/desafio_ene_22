@@ -10,14 +10,11 @@ const user = {
      * @param {JSON} res 
      */
     register: async (req, res) => {
+        const con = await conexion.abrir(req.cookies.session);
         try {
-            const { first_name, last_name, email, phone_number, birth_date, location, posta_code, interests, health_issues, car } = req.body;
-
-            var con = await conexion.abrir(req.cookies.session);
-
-            
+            const { first_name, last_name, email, phone_number, birth_date, location, postal_code, interests, health_issues, car } = req.body;
             const usr = await Users.create(con);
-            const newUser = await usr.create({ first_name, last_name, email, phone_number, birth_date, location, posta_code, interests, health_issues, car });
+            const newUser = await usr.create({ first_name, last_name, email, phone_number, birth_date, location, postal_code, interests, health_issues, car });
             const data = newUser.dataValues
             res.json(data)
         } catch (error) {
@@ -33,8 +30,8 @@ const user = {
      * @param {JSON} res 
      */
     setAvatar: async (req, res) => {
+        const con = await conexion.abrir(req.cookies.session);
         try {
-            var con = await conexion.abrir();
             const usr = await Users.create(con);
             const setter = await usr.update({ avatar: req.body.avatar }, { where: { id: req.body.id } })
             res.json(setter)
@@ -51,9 +48,9 @@ const user = {
      * @param {JSON} res 
      */
     update: async (req, res) => {
+        const con = await conexion.abrir(req.cookies.session);
         try {
             const { email, phone_number, location, posta_code, interests, health_issues, car, id } = req.body;
-            var con = await conexion.abrir();
             const usr = await Users.create(con);
             const setter = await usr.update({ email, phone_number, location, posta_code, interests, health_issues, car }, { where: { id } });
             res.json(setter)
@@ -70,13 +67,12 @@ const user = {
      * @param {JSON} res 
      */
     increaseStrikes: async (req, res) => {
+        const con = await conexion.abrir(req.cookies.session);
         try {
-            const { id } = req.body;
-            var con = await conexion.abrir();
             const usr = await Users.create(con);
             const userf= await usr.findByPk(id)
             const strikes = userf.dataValues.strikes
-            const setter = await usr.update({strikes: strikes+1}, { where: { id } });
+            const setter = await usr.update({strikes: strikes+1}, { where: { id:req.params.id } });
             res.json(setter)
         } catch (error) {
             res.json(error);
@@ -91,8 +87,8 @@ const user = {
      * @param {JSON} res 
      */
     resetStrikes: async (req, res) => {
+        const con = await conexion.abrir(req.cookies.session);
         try {
-            var con = await conexion.abrir();
             const usr = await Users.create(con);
             const userf= await usr.findByPk(id)
             const strikes = userf.dataValues.strikes
@@ -112,10 +108,10 @@ const user = {
      * @param {JSON} res 
      */
     getUserData: async (req, res) => {
+        const con = await conexion.abrir(req.cookies.session);
         try {
-            var con = await conexion.abrir();
             const usr = await Users.create(con);
-            res.json(await usr.findByPk(req.params.id_user))
+            res.json(await usr.findByPk(req.params.id))
         } catch (error) {
             res.send(error)
         } finally {
