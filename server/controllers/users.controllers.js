@@ -1,6 +1,5 @@
 const Users = require("../models/users.model")
 const conexion = require("../database/mysql")
-const conexion_volunteer = require("../database/mysql_volunteer")
 const { Op } = require("sequelize");
 
 

@@ -1,5 +1,5 @@
 require('dotenv').config();
-const jwt = require('jwt')
+const jwt = require('jsonwebtoken')
 
 conexion = {
     abrir: async (cookies) => {
