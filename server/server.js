@@ -9,11 +9,11 @@ const fs = require('fs');
 // Configuración del destino de las imagenes. Ordenado en carpetas por id del usuario.
 const storage = multer.diskStorage({
     destination: async (req, file, cb) => {
-      fs.mkdir(`./Images/${req.headers.id_user}`, (err) => {
+      fs.mkdir(`./Images/`, (err) => {
         if (err) { console.error(err);
         } else { console.log('Carpeta creada con éxito'); }
       });
-      const destination = `./Images/${req.headers.id_user}`
+      const destination = `./Images/`
       cb(null, destination);
     },
     filename: (req, file, cb) => {
