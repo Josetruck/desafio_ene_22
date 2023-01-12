@@ -16,6 +16,7 @@ router.get("/getUser/:id", user.getUserData)
 router.post("/login", volunteer.login )
 router.get("/volunteer/:id", volunteer.getvolunteerData)
 router.post("/volunteer-register", volunteer.register)
+router.get("/getLogged", volunteer.getLogged)
 
 
 

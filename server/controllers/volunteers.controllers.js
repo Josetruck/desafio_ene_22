@@ -83,7 +83,8 @@ const volunteer = {
                 const infoJwt = jwt.sign({ data }, process.env.JWT_SECRET);
                 if (compare) {
                     res.cookie("session", infoJwt)
-                    res.json(true)
+                    res.json({login:true,
+                    rol:data.rol})
                 } else {
                     res.json(false)
                 }
@@ -96,6 +97,19 @@ const volunteer = {
             await conexion.cerrar(con);
         }
     },
+    getLogged: async (req, res)=>{
+        const con = await conexion.abrir(req.cookies.session);
+        try {
+            data = jwt.verify(req.cookies.session, process.env.JWT_SECRET)
+            console.log(data)
+            const volunt = await Volunteer.create(con);
+            res.json(await volunt.findByPk(data.data.id))
+        } catch (error) {
+            res.json(error);
+        } finally {
+            await conexion.cerrar(con);
+        }
+    }
 }
 
 module.exports = volunteer
