@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import VolunteerHome from "./VolunteerHome";
+import TecnicoHome from "./TecnicoHome";
 import avatar from '../images/avatar.jpg'
 
 function Home() {
@@ -21,6 +22,7 @@ function Home() {
             {volunteer.avatar ? <img className="avatar-home" src={volunteer.avatar} alt="avatar" /> : <img className="avatar-home" src={avatar} alt="avatar" />}
             <p className="nombre-home">Hola {volunteer.first_name}</p>
             {volunteer.rol === "volunteer" && <VolunteerHome />}
+            {volunteer.rol === "tecnico" && <TecnicoHome />}
             <div className="bottom-margin"></div>
             <NavBar />
         </div>)
