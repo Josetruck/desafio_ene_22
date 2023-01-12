@@ -1,35 +1,50 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import VolunteerHome from "./VolunteerHome";
 import TecnicoHome from "./TecnicoHome";
 import avatar from '../images/avatar.jpg'
+import UserContext from "../context/UserContext";
+import { useCookies } from "react-cookie";
+import Login from './Login'
 
 function Home() {
-    const [volunteer, setVolunteer] = useState(false)
+    const [cookies, setCookie, removeCookie] = useCookies(['session']);
+    const {user, setUser} = useContext(UserContext)
+    const [logged, setLogged] = useState(false)
+
     useEffect(() => {
+        if (cookies.session) {
+          setLogged(true)
+        }
+      })
+    
+    
+      useEffect(() => {
         async function getUser() {
-            if (!volunteer) {
-                const res= await fetch("/getLogged")
-                const volunteerData= await res.json()
-                setVolunteer(volunteerData)
-            }
+          if (!user) {
+            const res = await fetch("/getLogged")
+            const userData = await res.json()
+            setUser(userData)
+          }
         }
         getUser();
-        console.log(volunteer)
-    }, [])
+        console.log(user)
+      })
 
-    if (volunteer) {
+
+    if(logged){
         return (<div className="Home">
-            {volunteer.avatar ? <img className="avatar-home" src={volunteer.avatar} alt="avatar" /> : <img className="avatar-home" src={avatar} alt="avatar" />}
-            <p className="nombre-home">Hola {volunteer.first_name}</p>
-            {volunteer.rol === "Non-technical" && <VolunteerHome />}
-            {volunteer.rol === "Technical" && <TecnicoHome />}
+            
+            {user.avatar ? <img className="avatar-home" src={user.avatar} alt="avatar" /> : <img className="avatar-home" src={avatar} alt="avatar" />}
+            <p className="nombre-home">Hola {user.first_name}</p>
+            {user.rol === "Non-technical" && <userHome />}
+            {user.rol === "Technical" && <TecnicoHome />}
             <div className="bottom-margin"></div>
             <NavBar />
         </div>)
-    } else {
-        return <p>Cargando datos...</p>
-    }
+}else {
+    return <Login setLogged={setLogged}/>
+}
 
 
 }

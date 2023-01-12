@@ -11,11 +11,11 @@ function TecnicoHome() {
 
 
     return (<div className="TecnicoHome">
-        <CardHome title="Dar de alta voluntario/as" subtitle="" image={altaVoluntarios} view={"nuevoVoluntario"}/>
-        <CardHome title="Dar de alta usuario/as" subtitle="" image={usuarios_asignados} view={"nuevoUsuario"} />
-        <CardHome title="Crear eventos" subtitle="" image={crearEventos} view={"crearEventos"} />
-        <CardHome title="Asignar tareas" subtitle="" image={asignarTareas} view={"asignarTareas"}/>
-        <CardHome title="Ver reportes de voluntario/as" subtitle="" image={verReportes} view={"verReportes"}/>
+        <CardHome title="Dar de alta voluntario/as" subtitle="" image={altaVoluntarios} view={"/nuevoVoluntario"}/>
+        <CardHome title="Dar de alta usuario/as" subtitle="" image={usuarios_asignados} view={"/nuevoUsuario"} />
+        <CardHome title="Crear eventos" subtitle="" image={crearEventos} view={"/crearEventos"} />
+        <CardHome title="Asignar tareas" subtitle="" image={asignarTareas} view={"/asignarTareas"}/>
+        <CardHome title="Ver reportes de voluntario/as" subtitle="" image={verReportes} view={"/verReportes"}/>
 
     </div>)
 }

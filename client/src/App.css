@@ -5,7 +5,10 @@
 
 }
 label{
-  color:#2C2C2C;
+  color:#000000;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
 }
 .Login{
   padding-top: 154px;
@@ -19,7 +22,7 @@ label{
   display: flex;
   flex-direction: column;
 }
-.form input{
+.form input, .form select{
   height: 40px;
   border: 1px solid #C8C3C3;
 }
@@ -72,20 +75,17 @@ button.centrado:focus{
   display: flex;
   flex-direction: column;
 }
-.scroll{
-  display: block;
-  background-color: #ffffff;
-  height: 2000px;
-}
+
 .NavBar{
   position:fixed;
+  z-index: 3;
   width: 100%;
   height: 48px;
   display: flex;
   background-color: #E20613;
   color: #ffffff;
   justify-content: space-around;
-  bottom: 0%;
+  bottom: 0px;
 }
 
 .btn-NavBar{
@@ -161,5 +161,78 @@ color: #818181;
 }
 
 .bottom-margin{
-  height: 48px;
+  height: 60px;
+  width: 100%;
+}
+
+.NewUser{
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.head-title{
+  width: 100%;
+  height: 46px;
+  background-color: #E20613;
+  color: #FFFFFF;
+  padding-left: 26px;
+}
+.head-title-text{
+  margin:0;
+  padding-top: 13px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.check-car{
+  margin-top: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.check-group{
+  padding:0px 8px;
+  background-color: #ffffff;
+  height: 40px;
+  border: 1px solid #C8C3C3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sinmargenP{
+  margin:0;
+  margin-right: 10px;
+  color:#000000;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+textarea {
+  overflow: scroll;
+  resize: none;
+  height: 159px;
+}
+.check-interest{
+  padding:0px 8px;
+  background-color: #ffffff;
+  border: 1px solid #C8C3C3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+.check-group-interest{
+display: flex;
+align-items: center;
+height: 31px;
+}
+a{
+  color: #FFFFFF;
+  text-decoration: none;
 }

@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import ViewContext from "../context/ViewContext";
+import { useNavigate } from "react-router-dom";
+import ViewContext from "../context/UserContext";
 
 function CardHome(props) {
 
-const {setView} = useContext(ViewContext)
+const navigate = useNavigate()
 
     return (<div className="CardHome">
         <div className="card-home Home">
@@ -13,7 +14,7 @@ const {setView} = useContext(ViewContext)
                     <p className="card-title">{props.title}</p>
                     <p className="card-subtitle">{props.subtitle}</p>
                 </div>
-                <button className="centrado btn-card" onClick={()=>setView(props.view)}>Ver</button>
+                <button className="centrado btn-card" onClick={()=>navigate(props.view)}>Ver</button>
             </div>
         </div>
     </div>)

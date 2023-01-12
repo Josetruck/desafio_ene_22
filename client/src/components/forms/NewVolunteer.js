@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import HeadTitle from "../HeadTitle";
-import NavBar from "../NavBar";
+import NavBar from "../NavBar"
 
-function NewUser() {
+function NewVolunteer() {
 
     const [first_name, setFirst_name] = useState("")
     const [last_name, setLast_name] = useState("")
@@ -11,17 +11,11 @@ function NewUser() {
     const [postal_code, setPostal_code] = useState("")
     const [phone_number, setPhone_number] = useState("")
     const [email, setEmail] = useState("")
-    const [healthIssues, setHealthIssues] = useState("")
+    const [pass, setPass] = useState("")
     const [pass2, setPass2] = useState("")
     const [availability, setAvailability] = useState("")
     const [studies, setStudies] = useState("")
     const [car, setCar] = useState("")
-    const [juegos, setJuegos] = useState(false)
-    const [reuniones, setReuniones] = useState(false)
-    const [musica, setMusica] = useState(false)
-    const [baile, setBaile] = useState(false)
-    const [cocina, setCocina] = useState(false)
-    const [manualidades, setManualidades] = useState(false)
 
     const handleSubmit = () => {
 
@@ -39,7 +33,7 @@ function NewUser() {
     }
 
     return (<div className="NewUser">
-        <HeadTitle title="Formulario usuaria/os"/>
+        <HeadTitle title="Formulario voluntaria/os" />
         <div className="form">
             <div className="form-group">
                 <label className="">Nombre</label>
@@ -70,37 +64,29 @@ function NewUser() {
                 <input type="email" onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className="form-group">
-                <label className="">Enfermedades y medicamentos</label>
-                <textarea  onChange={(e) => setHealthIssues(e.target.value)} />
+                <label className="">Contraseña</label>
+                <input type="password" onChange={(e) => setPass(e.target.value)} />
             </div>
             <div className="form-group">
-                <label className="">Actividades de interés</label>
-                <div className="check-interest">
-                    <div className="check-group-interest">
-                        <input type="checkbox"  onClick={(e)=>setJuegos(e.target.checked)} />
-                        <p className=" sinmargenP">Juegos de mesa</p>
-                    </div>
-                    <div className="check-group-interest">
-                        <input type="checkbox"  onClick={(e)=>setReuniones(e.target.checked)} />
-                        <p className=" sinmargenP" >Reuniones</p>
-                    </div>
-                    <div className="check-group-interest">
-                        <input type="checkbox"  onClick={(e)=>setMusica(e.target.checked)} />
-                        <p className=" sinmargenP">Música</p>
-                    </div>
-                    <div className="check-group-interest">
-                        <input type="checkbox"  onClick={(e)=>setBaile(e.target.checked)} />
-                        <p className=" sinmargenP" >Baile</p>
-                    </div>
-                    <div className="check-group-interest">
-                        <input type="checkbox"  onClick={(e)=>setCocina(e.target.checked)} />
-                        <p className=" sinmargenP">Cocina</p>
-                    </div>
-                    <div className="check-group-interest">
-                        <input type="checkbox"  onClick={(e)=>setManualidades(e.target.checked)} />
-                        <p className=" sinmargenP" >Manualidades</p>
-                    </div>
-                </div>
+                <label className="">Repetir contraseña</label>
+                <input type="password" onChange={(e) => setPass2(e.target.value)} />
+            </div>
+            <div className="form-group">
+                <label className="">Disponibilidad</label>
+                <select onChange={(e) => setAvailability(e.target.value)}>
+                    <option value="workdays" key="1">Diario</option>
+                    <option value="weekends" key="2">Fin de semana</option>
+                </select>
+            </div>
+            <div className="form-group">
+                <label className="">Estudios</label>
+                <select onChange={(e) => setStudies(e.target.value)}>
+                    <option value="No studies" key="1">Sin estudios</option>
+                    <option value="Primary School" key="2">Primaria</option>
+                    <option value="High School" key="3">Secundaria</option>
+                    <option value="Bachelors" key="4">Grado universitario</option>
+                    <option value="Masters" key="5">Masters</option>
+                </select>
             </div>
             <div className="form-group">
                 <label className="">¿Dispone de coche propio?</label>
@@ -115,11 +101,9 @@ function NewUser() {
                     </div>
                 </div>
             </div>
-
-
         </div>
         <div className="centrado">
-            <button className="centrado" id="btn-login" onClick={handleSubmit}>Registrar</button>
+            <button className="centrado" id="btn-login" onClick={handleSubmit}>Añadir</button>
         </div>
         <div className="bottom-margin"></div>
         <NavBar />
@@ -127,4 +111,4 @@ function NewUser() {
 }
 
 
-export default NewUser;
+export default NewVolunteer;
