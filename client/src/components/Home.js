@@ -15,14 +15,15 @@ function Home() {
             }
         }
         getUser();
+        console.log(volunteer)
     }, [])
 
     if (volunteer) {
         return (<div className="Home">
             {volunteer.avatar ? <img className="avatar-home" src={volunteer.avatar} alt="avatar" /> : <img className="avatar-home" src={avatar} alt="avatar" />}
             <p className="nombre-home">Hola {volunteer.first_name}</p>
-            {volunteer.rol === "volunteer" && <VolunteerHome />}
-            {volunteer.rol === "tecnico" && <TecnicoHome />}
+            {volunteer.rol === "Non-technical" && <VolunteerHome />}
+            {volunteer.rol === "Technical" && <TecnicoHome />}
             <div className="bottom-margin"></div>
             <NavBar />
         </div>)

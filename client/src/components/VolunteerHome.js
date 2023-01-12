@@ -9,9 +9,9 @@ function VolunteerHome() {
 
 
     return (<div className="VolunteerHome">
-        <CardHome title="Usuaria/os asignada/os" subtitle="Mira a quién te hemos asignado" image={usuarios_asignados} />
-        <CardHome title="Talleres y eventos" subtitle="Asiste y pasa un buen rato" image={talleres} />
-        <CardHome title="Agenda" subtitle="Todas tus actividades en un sitio" image={agenda} />
+        <CardHome title="Usuaria/os asignada/os" subtitle="Mira a quién te hemos asignado" image={usuarios_asignados} view={"usuariosAsignados"}/>
+        <CardHome title="Talleres y eventos" subtitle="Asiste y pasa un buen rato" image={talleres} view={"talleres"}/>
+        <CardHome title="Agenda" subtitle="Todas tus actividades en un sitio" image={agenda} view={"agenda"}/>
 
     </div>)
 }

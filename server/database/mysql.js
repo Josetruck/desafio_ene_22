@@ -11,8 +11,8 @@ conexion = {
         } else {
             data = {data:{rol:cookies}}
         }
-        if (data.data.rol == "tecnico") {
-            console.log("Conectado como tecnico")
+        if (data.data.rol == "Technical") {
+            console.log("Conectado como Technical")
             sequelize = new Sequelize('cruzroja', process.env.MYSQL_USER, process.env.MYSQL_PASS, {
                 host: 'localhost',
                 dialect: 'mysql',
