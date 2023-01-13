@@ -59,6 +59,14 @@ volunteerModel = {
             volunteer_since: {
                 type: DataTypes.DATE,
                 allowNull: true
+            },
+            avatar: {
+                type: DataTypes.STRING,
+                allowNull: true
+            },
+            comments:{
+                type: DataTypes.STRING,
+                allowNull: true
             }
 
         }, {

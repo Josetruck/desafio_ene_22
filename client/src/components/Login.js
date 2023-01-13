@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "../context/UserContext";
 import logo from "../images/logo.png"
 
 function Login(props) {
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
     const [error, setError] = useState(false)
+    const { user, setUser } = useContext(UserContext)
 
 
     useEffect(() => {
@@ -16,20 +18,27 @@ function Login(props) {
         }
     })
 
-    function loginresult(){
+    function loginresult() {
+        async function getUser() {
+                const res = await fetch("/getLogged")
+                const userData = await res.json()
+                setUser(userData)
+        }
+        getUser();
         props.setLogged(true)
+
     }
 
     const handleLogin = () => {
         const options = {
             method: "POST",
-            mode:"cors",
+            mode: "cors",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, pass })
         }
 
         fetch("/login", options).then(res => res.json()).then(res => {
-            if (res.login) {  
+            if (res.login) {
                 loginresult()
                 setError(false)
             }
@@ -50,7 +59,7 @@ function Login(props) {
                 <label className="negrita">Contraseña</label>
                 <input type="password" onChange={(e) => setPass(e.target.value)} />
             </div>
-            {error&&<p className="error">Email y/o Contraseña incorrectos.</p>}
+            {error && <p className="error">Email y/o Contraseña incorrectos.</p>}
         </div>
         <div className="centrado">
             <button className="centrado" id="btn-login" onClick={handleLogin}>Entrar</button>

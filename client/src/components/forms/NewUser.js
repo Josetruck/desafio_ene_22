@@ -15,13 +15,15 @@ function NewUser() {
     const [pass2, setPass2] = useState("")
     const [availability, setAvailability] = useState("")
     const [studies, setStudies] = useState("")
-    const [car, setCar] = useState("")
+    const [car, setCar] = useState(false)
     const [juegos, setJuegos] = useState(false)
     const [reuniones, setReuniones] = useState(false)
     const [musica, setMusica] = useState(false)
     const [baile, setBaile] = useState(false)
     const [cocina, setCocina] = useState(false)
     const [manualidades, setManualidades] = useState(false)
+    const [comments, setComments] = useState("")
+
 
     const handleSubmit = () => {
 
@@ -36,6 +38,16 @@ function NewUser() {
         const carSi = document.getElementById("car-si")
             carSi.checked = false
             setCar(false)
+    }
+    const setEnable= (value)=>{
+        const button = document.getElementById("btn-register-user")
+        if(value){
+            button.disabled =false
+        }else{
+            button.disabled=true
+        }
+
+
     }
 
     return (<div className="NewUser">
@@ -115,11 +127,20 @@ function NewUser() {
                     </div>
                 </div>
             </div>
-
+            <div className="form-group">
+                <label className="">Comentarios</label>
+                <textarea  onChange={(e) => setComments(e.target.value)} />
+            </div>
+            <div className="form-group">
+                <div className="check-group">
+                    <input type="checkbox" id="car-si" onClick={(e)=>setEnable(e.target.checked)} />
+                    <p style={{ fontWeight:"200", fontSize:"12px" }}>Acepto la</p><a href="" style={{color:"red", fontWeight:"200", fontSize:"12px", textDecoration:"underline" }}>Politica de privacidad de datos</a>
+                </div>
+            </div>
 
         </div>
         <div className="centrado">
-            <button className="centrado" id="btn-login" onClick={handleSubmit}>Registrar</button>
+            <button className="centrado" id="btn-register-user" onClick={handleSubmit}>Registrar</button>
         </div>
         <div className="bottom-margin"></div>
         <NavBar />

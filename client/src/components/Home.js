@@ -13,8 +13,10 @@ function Home() {
     const [logged, setLogged] = useState(false)
 
     useEffect(() => {
-        if (cookies.session) {
+        if (cookies.session && user.name !="JsonWebTokenError") {
           setLogged(true)
+        } else {
+          setLogged(false)
         }
       })
     

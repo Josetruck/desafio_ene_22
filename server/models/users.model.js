@@ -55,6 +55,10 @@ userModel = {
             car: {
                 type: DataTypes.BOOLEAN,
                 allowNull: true
+            },
+            comments:{
+                type: DataTypes.STRING,
+                allowNull: true
             }
         }, {
             timestamps: false

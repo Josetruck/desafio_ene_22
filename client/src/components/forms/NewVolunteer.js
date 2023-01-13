@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import HeadTitle from "../HeadTitle";
 import NavBar from "../NavBar"
 
@@ -13,24 +14,62 @@ function NewVolunteer() {
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
     const [pass2, setPass2] = useState("")
-    const [availability, setAvailability] = useState("")
-    const [studies, setStudies] = useState("")
-    const [car, setCar] = useState("")
+    const [passError, setPassError] = useState(false)
+    const [availability, setAvailability] = useState("workdays")
+    const [studies, setStudies] = useState("No studies")
+    const [car, setCar] = useState(false)
+    const [volunteer_since, setVolunteer_since] = useState("")
+    const [comments, setComments] = useState("")
+    const navigate = useNavigate()
 
-    const handleSubmit = () => {
+    
 
+
+    
+    const handleSubmit = async () => {
+        console.log("hola")
+        const body = { first_name, last_name, birth_date, location, postal_code, phone_number, email, pass, availability, studies, car, volunteer_since, comments }
+        if (pass === pass2) {
+            const response = await fetch("/volunteer-register", {
+                method: "POST",
+                mode: "cors",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            })
+            const status = await response.json()
+            console.log(status)
+            if(status){
+                navigate("/")
+            } else {
+                alert("Algo no ha ido bien.")
+            }
+            
+        } else {
+            setPassError(true)
+        }
     }
-
+    
     const checkCarSi = () => {
         const carNo = document.getElementById("car-no")
-            carNo.checked = false
-            setCar(true)
+        carNo.checked = false
+        setCar(true)
     }
     const checkCarNo = () => {
         const carSi = document.getElementById("car-si")
-            carSi.checked = false
-            setCar(false)
+        carSi.checked = false
+        setCar(false)
     }
+    const setEnable= (value)=>{
+        const button = document.getElementById("btn-register-volunteer")
+        if(value){
+            button.disabled =false;
+            setEnabled(true)
+        }else{button.disabled=true}
+
+    }
+    const [enabled, setEnabled] = useState(false)
+ 
+
 
     return (<div className="NewUser">
         <HeadTitle title="Formulario voluntaria/os" />
@@ -101,9 +140,25 @@ function NewVolunteer() {
                     </div>
                 </div>
             </div>
+            <div className="form-group">
+                <label className="">Fecha de incorporación</label>
+                <input type="date" onChange={(e) => setVolunteer_since(e.target.value)} />
+            </div>
+            <div className="form-group">
+                <label className="">Comentarios</label>
+                <textarea onChange={(e) => setComments(e.target.value)} />
+            </div>
+            <div className="form-group">
+                <div className="check-group">
+                    <input type="checkbox" id="car-si" onClick={(e)=>setEnable(e.target.checked)} />
+                    <p style={{ fontWeight:"200", fontSize:"12px" }}>Acepto la</p><a href="" style={{color:"red", fontWeight:"200", fontSize:"12px", textDecoration:"underline" }}>Politica de privacidad de datos</a>
+                </div>
+            </div>
         </div>
         <div className="centrado">
-            <button className="centrado" id="btn-login" onClick={handleSubmit}>Añadir</button>
+{  enabled ? <button className="centrado" id="btn-register-volunteer" onClick={handleSubmit}>Añadir</button>:
+            <button className="centrado" id="btn-register-volunteer" onClick={handleSubmit} disabled>Añadir</button>}
+
         </div>
         <div className="bottom-margin"></div>
         <NavBar />

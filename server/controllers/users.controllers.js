@@ -12,13 +12,14 @@ const user = {
     register: async (req, res) => {
         const con = await conexion.abrir(req.cookies.session);
         try {
-            const { first_name, last_name, email, phone_number, birth_date, location, postal_code, interests, health_issues, car } = req.body;
+            const { first_name, last_name, email, phone_number, birth_date, location, postal_code, interests, health_issues, car, comments } = req.body;
             const usr = await Users.create(con);
-            const newUser = await usr.create({ first_name, last_name, email, phone_number, birth_date, location, postal_code, interests, health_issues, car });
+            const newUser = await usr.create({ first_name, last_name, email, phone_number, birth_date, location, postal_code, interests, health_issues, car, comments });
             const data = newUser.dataValues
-            res.json(data)
+            res.json(true)
         } catch (error) {
-            res.json(error);
+            console.log(error)
+            res.json(false);
         } finally {
             await conexion.cerrar(con);
         }
@@ -70,9 +71,9 @@ const user = {
         const con = await conexion.abrir(req.cookies.session);
         try {
             const usr = await Users.create(con);
-            const userf= await usr.findByPk(id)
+            const userf = await usr.findByPk(id)
             const strikes = userf.dataValues.strikes
-            const setter = await usr.update({strikes: strikes+1}, { where: { id:req.params.id } });
+            const setter = await usr.update({ strikes: strikes + 1 }, { where: { id: req.params.id } });
             res.json(setter)
         } catch (error) {
             res.json(error);
@@ -90,9 +91,9 @@ const user = {
         const con = await conexion.abrir(req.cookies.session);
         try {
             const usr = await Users.create(con);
-            const userf= await usr.findByPk(id)
+            const userf = await usr.findByPk(id)
             const strikes = userf.dataValues.strikes
-            const setter = await usr.update({strikes: 0}, { where: { id:req.params.id } });
+            const setter = await usr.update({ strikes: 0 }, { where: { id: req.params.id } });
             res.json(setter)
         } catch (error) {
             res.json(error);

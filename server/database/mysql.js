@@ -7,7 +7,12 @@ conexion = {
         var sequelize;
         var data;
         if(cookies != "login"){
-             data = jwt.verify(cookies, process.env.JWT_SECRET)
+            try {
+                data = jwt.verify(cookies, process.env.JWT_SECRET)
+            } catch (error) {
+                console.log(error)
+                data = {data:{rol:cookies}}
+            }
         } else {
             data = {data:{rol:cookies}}
         }
