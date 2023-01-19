@@ -1,6 +1,6 @@
 const express = require("express");
 const router = require("./routes/routes");
-const port = 5000;
+const port = 5001;
 const app = express();
 const cookieParser = require('cookie-parser');
 const multer = require("multer")
@@ -36,7 +36,7 @@ const storage = multer.diskStorage({
     });
   });
 
-
+app.use('/Images', express.static('Images'));
   
 app.listen(port, () => console.log(`Server ON: ${port}`));
 
